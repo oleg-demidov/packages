@@ -12,5 +12,7 @@
             "Packages\\": "src/"
         }
     },
+    "minimum-stability": "dev",
+    "license": "MIT",
     "require": {}
 }
