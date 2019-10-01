@@ -43,7 +43,10 @@ class Packages {
         return $this->query->getData();
     }
     
-    
+    /**
+     * 
+     * @return Query
+     */
     public function query() {
         return $this->query;
     }
@@ -51,15 +54,15 @@ class Packages {
     /**
      * @param string $sPathToJson путь к файлу
      * @return array json массив 
-     * @throws PackagesException
+     * @throws Exceptions\PackagesException
      */
     protected function readJsonToArray(string $sPathToJson) {
-        try{
+//        try{
             $sFile = file_get_contents($sPathToJson);
-            return json_decode($sFile, true, 512, JSON_THROW_ON_ERROR);
+            return json_decode($sFile, true);
             
-        } catch (Exception $e){
-            throw new PackagesException($e->getMessage());
-        }
+//        } catch (Exception $e){
+//            throw new Exceptions\PackagesException($e->getMessage());
+//        }
     }
 }

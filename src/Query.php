@@ -29,8 +29,13 @@ class Query {
     public function __construct(array $aDataPackages) {
         $this->aDataPackages = $aDataPackages;
     }
-    
+    /**
+     * 
+     * @param array $aFilter
+     * @return \Packages\Package[]
+     */
     public function where(array $aFilter) {
+        
         $aPackages = [];
         
         foreach ($aFilter as $key => $value) {
@@ -39,7 +44,11 @@ class Query {
         
         return $aPackages;
     }
-    
+    /**
+     * 
+     * @param array $aFilter
+     * @return \Packages\Package[]
+     */
     protected function getByOneFilter(array $aFilter) {
         $aPackages = [];
         

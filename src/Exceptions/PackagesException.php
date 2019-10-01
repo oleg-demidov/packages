@@ -15,7 +15,7 @@
  *
  */
 
-namespace Packages\PackagesException;
+namespace Packages\Exceptions\PackagesException;
 
 /**
  * Description of PackagesException

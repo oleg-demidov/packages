@@ -36,7 +36,7 @@ class Package {
     
     public function get(string $sKey) {
         if(!isset($this->aDataPackage[$sKey])){
-            throw new PackagesException("No key {$sKey} in package {$this->aDataPackage['name']}");
+            throw new Exceptions\PackagesException("No key {$sKey} in package {$this->aDataPackage['name']}");
         }
         
         return $this->aDataPackage[$sKey];
