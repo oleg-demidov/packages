@@ -1,0 +1,16 @@
+{
+    "name": "olegdemidov/composer-packages",
+    "description": "Просмотр установленных пакетов из installed.json",
+    "authors": [
+        {
+            "name": "Oleg Demidov",
+            "email": "end-fin@yandex.ru"
+        }
+    ],
+    "autoload": {
+        "psr-4" : {
+            "Packages\\": "src/"
+        }
+    },
+    "require": {}
+}
