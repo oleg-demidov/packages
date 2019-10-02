@@ -24,10 +24,12 @@ namespace Packages;
  */
 class Query {
     
-    protected $aDataPackages;
+    use ReadTrait;
+    
+    protected $aData;
 
     public function __construct(array $aDataPackages) {
-        $this->aDataPackages = $aDataPackages;
+        $this->aData = $aDataPackages;
     }
     /**
      * 
@@ -44,6 +46,7 @@ class Query {
         
         return $aPackages;
     }
+    
     /**
      * 
      * @param array $aFilter
@@ -52,23 +55,27 @@ class Query {
     protected function getByOneFilter(array $aFilter) {
         $aPackages = [];
         
-        foreach ($this->aDataPackages as $aPackage) {
-            if(!isset($aPackage[key($aFilter)])){
+        foreach ($this->aData as $aPackage) {
+            $package = new Package($aPackage);
+            
+            if(!$value = $package->get(key($aFilter))){
                 continue;
             }
             
-            if($aPackage[key($aFilter)] === current($aFilter)){
-                $aPackages[] = new Package($aPackage);
+            if($value === current($aFilter)){
+                $aPackages[] = $package;
             }         
         }
         
         return $aPackages;
     }
     
+    
+    
     public function all() {
         $aPackages = [];
         
-        foreach ($this->aDataPackages as $aPackage) {
+        foreach ($this->aData as $aPackage) {
             if(isset($aPackage['name'])){
                 $aPackages[$aPackage['name']] = new Package($aPackage);
             }
@@ -77,7 +84,7 @@ class Query {
     }
     
     public function getData() {
-        return $this->aDataPackages;
+        return $this->aData;
     }
     
 }

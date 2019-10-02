@@ -24,21 +24,16 @@ namespace Packages;
  */
 class Package {
     
-    protected $aDataPackage;
+    use ReadTrait;
+    
+    protected $aData;
     
     public function __construct(array $aDataPackage) {
-        $this->aDataPackage = $aDataPackage;
+        $this->aData = $aDataPackage;
     }
 
     public function version() {
         return $this->get('version');
     }
     
-    public function get(string $sKey) {
-        if(!isset($this->aDataPackage[$sKey])){
-            throw new Exceptions\PackagesException("No key {$sKey} in package {$this->aDataPackage['name']}");
-        }
-        
-        return $this->aDataPackage[$sKey];
-    }
 }
